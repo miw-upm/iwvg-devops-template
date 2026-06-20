@@ -22,6 +22,10 @@ spring:
 
 app:
   hosting: localhost
+  db:
+    admin: ${DB_ADMIN:admin}
+    mobile: ${DB_MOBILE:6}
+    password: ${DB_PASSWORD:6}
 
 management:
   endpoints:

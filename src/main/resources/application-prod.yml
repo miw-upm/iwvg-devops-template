@@ -11,6 +11,9 @@ springdoc:
 
 app:
   hosting: AWS
+  db:
+    mobile: ${DB_MOBILE}
+    password: ${DB_PASSWORD}
 
 spring:
   jpa:

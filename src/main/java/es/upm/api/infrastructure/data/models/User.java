@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Builder
 @Data
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 @Table(name = "miwUser")
 public class User {
     @Id
-    private String id;
+    private UUID id;
     @Column(unique = true, nullable = false)
     private String mobile;
     private String firstName;
