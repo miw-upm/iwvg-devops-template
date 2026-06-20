@@ -11,5 +11,12 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByMobile(String mobile);
+
+    Optional<User> findByMobileAndActive(String mobile, Boolean active);
+
+    List<User> findByActive(Boolean active);
+
     List<User> findByRoleIn(Collection<Role> roles);
+
+    boolean existsByMobile(String mobile);
 }
