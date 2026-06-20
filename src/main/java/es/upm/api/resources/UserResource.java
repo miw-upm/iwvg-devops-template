@@ -16,7 +16,6 @@ import java.util.List;
 @Log4j2
 public class UserResource {
     public static final String USERS = "/users";
-
     private final UserService userService;
 
     @PostMapping
@@ -32,6 +31,5 @@ public class UserResource {
                 .map(UserDto::toSummary)
                 .toList();
     }
-
 
 }

@@ -1,8 +1,11 @@
 package es.upm.api.infrastructure.data.models;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.Optional;
 
+@Getter
 public enum Province {
     ALAVA("01"),
     ALBACETE("02"),
@@ -66,10 +69,6 @@ public enum Province {
         return Arrays.stream(values())
                 .filter(province -> province.code.equals(code))
                 .findFirst();
-    }
-
-    public String getCode() {
-        return code;
     }
 
 }
