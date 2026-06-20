@@ -19,6 +19,8 @@ spring:
     type: none
   jackson:
     default-property-inclusion: NON_NULL
+  jpa:
+    open-in-view: false
 
 app:
   hosting: localhost
@@ -38,5 +40,5 @@ management:
 
 logging:
   level:
-    root: INFO
-    es.upm.miw: DEBUG
+    root: WARN
+    es.upm.api: DEBUG
