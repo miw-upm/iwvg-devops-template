@@ -1,0 +1,16 @@
+services:
+  iwvg-devops:
+    build: .
+    image: devops:latest
+    restart: always
+    ports: ["8080:8080"]
+    environment:
+      JAVA_OPTS: "-Xms64m -Xmx384m"
+    networks: [devops]
+    extra_hosts: [ "host.docker.internal:host-gateway" ]
+
+networks:
+  devops:
+    external: true
+
+#> docker compose up --build -d

@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+info:
+  app:
+    artifact: "@project.artifactId@"
+    version: "@project.version@"
+    build: "@maven.build.timestamp@"
+
+spring:
+  application:
+    name: iwvg-devops
+  profiles:
+    default: dev
+  output:
+    ansi:
+      enabled: ALWAYS
+  cache:
+    type: none
+  jackson:
+    default-property-inclusion: NON_NULL
+
+app:
+  hosting: localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+
+logging:
+  level:
+    root: INFO
+    es.upm.miw: DEBUG
