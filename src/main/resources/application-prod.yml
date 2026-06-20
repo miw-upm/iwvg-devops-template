@@ -21,6 +21,6 @@ spring:
       ddl-auto: update
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://postgres-server:5432/iwvguserdb
+    url: jdbc:postgresql://postgres-server:5432/iwvgdevopsdb
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}

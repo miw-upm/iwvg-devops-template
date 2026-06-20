@@ -2,12 +2,12 @@ services:
 
   postgres:
     image: postgres:15.10
-    container_name: postgres-server
+    container_name: postgres
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: miwUser
+      POSTGRES_DB: iwvgdevopsdb
     ports:
       - "5432:5432"
     volumes:
@@ -16,10 +16,8 @@ services:
       - devops
 
 volumes:
-  mongo_data:
-    name: "mongo-data"
-  mongo_config:
-    name: "mongo-config"
+  postgres_data:
+    name: "postgres-data"
 
 networks:
   devops:
