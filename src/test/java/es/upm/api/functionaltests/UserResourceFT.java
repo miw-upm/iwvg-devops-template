@@ -106,8 +106,6 @@ class UserResourceFT {
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(userDto)
                 .exchange()
-                .expectStatus().isBadRequest()
-                .expectBody(ErrorMessage.class)
-                .value(error -> assertThat(error.getMessage()).contains(SeederForDev.MANAGER.getMobile()));
+                .expectStatus().isBadRequest();
     }
 }

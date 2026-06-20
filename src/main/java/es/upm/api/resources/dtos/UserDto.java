@@ -46,12 +46,9 @@ public class UserDto {
     @JsonProperty(access = Access.READ_ONLY)
     private LocalDate registrationDate;
     private Boolean active;
-    @JsonProperty(access = Access.READ_ONLY)
-    private Boolean billable;
 
     public UserDto(User user) {
         BeanUtils.copyProperties(user, this);
-        // TODO this.billable = si tiene datos en firstName, familyName, email, identity, address, city, province y postalCode;
     }
 
     public void doDefault() {
@@ -70,7 +67,6 @@ public class UserDto {
                 .firstName(this.getFirstName())
                 .familyName(this.getFamilyName())
                 .email(this.getEmail())
-                .billable(this.billable)
                 .build();
     }
 
