@@ -1,33 +1,12 @@
 # Guia de estilo y arquitectura - (v5)
 
-Documento normativo para contribuir en `devops`.
-Estructura de paquetes alineada con el esquema UML de referencia.
+Documento normativo para contribuir en `devops`. Estructura de paquetes alineada con el esquema UML de referencia.
 
 ## Niveles de regla
 
 - `DEBE`: obligatorio.
 - `DEBERIA`: recomendado, salvo razon tecnica explicita.
 - `PUEDE`: opcional.
-
-## Limites de tamano
-
-Heuristicas de diseno, no leyes: el criterio real es responsabilidad unica
-y legibilidad. Estas cifras son el umbral que salta para revisar.
-
-- DEBERIA mantener <= 3 parametros por metodo. Si aparecen mas, agrupar los
-  que formen un concepto en un objeto (`criteria` / `creations`).
-- DEBERIA mantener <= 20 lineas por metodo.
-- DEBERIA mantener complejidad ciclomatica <= 8 por metodo.
-- DEBERIA mantener <= 2 niveles de anidamiento.
-- DEBERIA mantener <= 20 metodos publicos por clase.
-- DEBERIA mantener <= 6 dependencias inyectadas por constructor. Mas
-  dependencias suele indicar que la clase tiene mas de una responsabilidad.
-- DEBERIA mantener <= 250 lineas por clase.
-- DEBERIA mantener <= 100 caracteres por linea.
-- DEBERIA mantener entre 2 y 20 clases por paquete.
-
-Excepciones:
-- Pueden haberlas siempre que el diseño lo requiera
 
 ## Estructura del microservicio
 
@@ -52,62 +31,50 @@ es.upm.api/
 
 Capas (la dependencia solo baja: resources -> services -> infrastructure):
 - `resources`: capa HTTP (controllers, dtos, manejo de errores HTTP).
-- `services`: logica de negocio (services, criteria, creations y exceptions
-  de negocio).
-- `infrastructure`: acceso al exterior y soporte tecnico. Agrupa
-  persistencia (`data`), clientes HTTP a otros servicios (`clientshttp`) y
-  utilidades tecnicas (`support`).
+- `services`: logica de negocio (services, criteria, creations y exceptions de negocio).
+- `infrastructure`: acceso al exterior y soporte tecnico. Agrupa persistencia (`data`), clientes HTTP a otros servicios
+  (`clientshttp`) y utilidades tecnicas (`support`).
 
 ## DTOs
 
-- DEBE controlar el valor de sus atributos.
+- DEBE declarar restricciones de sus atributos con anotaciones de validacion (@NotNull, @Email, @Size, etc.),
+  que se disparan con @Valid en el resource.
 - DEBE ubicarse en `resources.dtos`.
-- DEBE usarse para transporte HTTP de datos del recurso (salida y lecturas,
-  y entradas simples), no para operaciones de negocio complejas.
+- DEBE usarse para transporte HTTP de datos del recurso (salida y lecturas, y entradas simples), no para operaciones de
+  negocio complejas.
 - DEBE seguir esta convencion segun la forma del payload:
-  - `XxxDto`: entrada/salida cuando ambas comparten forma; marcar
-    asimetrias puntuales con `@JsonProperty(access = Access.READ_ONLY)`
-    y `@JsonProperty(access = Access.WRITE_ONLY)`.
+  - `XxxDto`: entrada/salida cuando ambas comparten forma; marcar asimetrias puntuales con `@JsonProperty(access =
+    Access.READ_ONLY)` y `@JsonProperty(access = Access.WRITE_ONLY)`.
   - `XxxResponseDto`: solo salida.
-  - `XxxCreationDto`: solo entrada de creacion cuando la forma de creacion
-    diverge de verdad del DTO generico.
+  - `XxxCreationDto`: solo entrada de creacion cuando la forma de creacion diverge de verdad del DTO generico.
   - `XxxUpdatingDto`: solo entrada de actualizacion.
-- DEBE mantener conversion DTO <-> entidad en capa `resources.dtos`
-  (constructores y `toDomain()`).
+- DEBE mantener conversion DTO <-> entidad en capa `resources.dtos` (constructores y `toDomain()`).
 - NO DEBE mover DTOs a capa `services`.
 
 Criterio de separacion:
 - DEBERIA empezar con `XxxDto` mientras entrada y salida compartan forma.
-- DEBE separar en `Response` / `Creation` / `Updating` cuando mas del 50%
-  de los campos divergen entre entrada y salida, o cuando las validaciones
-  de entrada y salida sean sustancialmente distintas.
-- PUEDE mantener `XxxDto` con `@JsonProperty(access = ...)` cuando las
-  asimetrias son puntuales y no superan ese umbral.
-- NO DEBE separar de forma preventiva: el split se gana cuando la
-  asimetria ya existe.
+- DEBE separar en `Response` / `Creation` / `Updating` cuando mas del 50% de los campos divergen entre entrada y salida,
+  o cuando las validaciones de entrada y salida sean sustancialmente distintas.
+- PUEDE mantener `XxxDto` con `@JsonProperty(access = ...)` cuando las asimetrias son puntuales y no superan ese umbral.
+- NO DEBE separar de forma preventiva: el split se gana cuando la asimetria ya existe.
 
 Racional de dependencia (DTO -> entidad):
-- La dependencia va del DTO hacia la entidad, nunca al reves. Permite
-  multiples proyecciones/vistas sobre una misma entidad sin alterar
-  persistencia. Lo volatil (la vista) depende de lo estable (la entidad).
-- Por eso la conversion vive en `resources.dtos` y el servicio trabaja
-  solo con entidades y modelos de negocio.
+- La dependencia va del DTO hacia la entidad, nunca al reves. Permite multiples proyecciones/vistas sobre una misma
+  entidad sin alterar persistencia. Lo volatil (la vista) depende de lo estable (la entidad).
+- Por eso la conversion vive en `resources.dtos` y el servicio trabaja solo con entidades y modelos de negocio.
 
 ## Recursos (HTTP)
 
 - DEBE usar `@RestController` y sufijo `Resource`.
 - DEBE delegar logica de negocio al servicio.
 - DEBE usar rutas base como constantes (`public static final String ...`).
-- DEBE usar inyeccion por constructor (`@RequiredArgsConstructor`) cuando
-  tenga dependencias/beans inyectados.
+- DEBE usar inyeccion por constructor (`@RequiredArgsConstructor`) cuando tenga dependencias/beans inyectados.
 - PUEDE usar `@Value` en campos para propiedades simples de configuracion.
 - DEBERIA validar entrada con `@Valid` y regex de `Validations`.
-- Entrada: DEBE recibir DTOs de `resources.dtos`. En creaciones, DEBERIA
-  recibirse `XxxDto` si comparte forma con lectura/salida, o
-  `XxxCreationDto` si la forma de creacion es distinta pero sigue siendo una
-  entrada HTTP simple.
-- PUEDE recibir un modelo de `services.creations` cuando la creacion no se
-  adapte bien a un DTO o represente una operacion de negocio compleja, que se abarca a diferentes modelos del negocio.
+- Entrada: DEBE recibir DTOs de `resources.dtos`. En creaciones, DEBERIA recibirse `XxxDto` si comparte forma con
+  lectura/salida, o `XxxCreationDto` si la forma de creacion es distinta pero sigue siendo una entrada HTTP simple.
+- PUEDE recibir un modelo de `services.creations` cuando la creacion no se adapte bien a un DTO o represente una
+  operacion de negocio compleja, que se abarca a diferentes modelos del negocio.
 
 ## Filtros de búsqueda
 
@@ -119,13 +86,14 @@ Racional de dependencia (DTO -> entidad):
 
 ## Modelos complejos de creación
 
-- DEBE controlar el valor de sus atributos.
+- DEBE declarar restricciones de sus atributos con anotaciones de validacion (@NotNull, @Email, @Size, etc.),
+  que se disparan con @Valid en el resource.
 - DEBE vivir en `services.creations`.
-- Representa una operacion de creacion compleja o una intencion de negocio
-  que no se adapte bien a un DTO generico, sino que abarque a varios modelos.
+- Representa una operacion de creacion compleja o una intencion de negocio que no se adapte bien a un DTO generico, sino
+  que abarque a varios modelos.
 - NO ES un DTO: NO DEBE llevar sufijo `Dto` ni vivir en `resources.dtos`.
-- PUEDE ser recibido directamente por el resource como `@RequestBody` cuando
-  sea la mejor representacion de la operacion.
+- PUEDE ser recibido directamente por el resource como `@RequestBody` cuando sea la mejor representacion de la
+  operacion.
 
 ## Servicios
 
@@ -133,7 +101,7 @@ Racional de dependencia (DTO -> entidad):
 - DEBE trabajar con entidades y modelos de negocio (criteria/creations), no con DTOs.
 - DEBERIA mantener nombres consistentes: `create`, `read`, `update`, `delete`, `find`.
 - DEBE lanzar `NotFoundException` en `read/update` cuando no exista recurso.
-- NO DEBE lanzar `NotFoundException` en `delete` cuando el no exdista el recurso previamente.
+- NO DEBE lanzar `NotFoundException` en `delete` cuando el no exista el recurso previamente.
 - DEBERIA encapsular invariantes en metodos privados (`assertXxx`, `validateXxx`, etc.).
 
 ## Persistencia (JPA)
@@ -141,8 +109,8 @@ Racional de dependencia (DTO -> entidad):
 - DEBE usar `JpaRepository` en `infrastructure.data.daos`.
 - DEBE usar convenciones Spring Data en metodos simples (`findByX`, `existsByX`, etc.).
 - DEBERIA usar consultas derivadas de Spring Data para filtros simples.
-- PUEDE usar `@Query`, `Specification` o repositorios custom cuando la consulta
-  no sea expresable de forma clara con metodos derivados.
+- PUEDE usar `@Query`, `Specification` o repositorios custom cuando la consulta no sea expresable de forma clara con
+  metodos derivados.
 
 ## Entidades
 
@@ -151,11 +119,11 @@ Racional de dependencia (DTO -> entidad):
 - DEBE marcar id con `jakarta.persistence.Id`.
 - DEBERIA usar `@Table` cuando el nombre de tabla no deba coincidir con el nombre de la clase.
 - DEBERIA usar `@Column(unique = true)` en campos unicos.
-- DEBE modelar relaciones con anotaciones JPA (`@OneToOne`, `@OneToMany`,
-  `@ManyToOne`, `@ManyToMany`) cuando la relacion lo requiera.
+- DEBE modelar relaciones con anotaciones JPA (`@OneToOne`, `@OneToMany`, `@ManyToOne`, `@ManyToMany`) cuando la
+  relacion lo requiera.
 - DEBE usar `@Enumerated(EnumType.STRING)` para persistir enums de negocio.
-- DEBERIA exponer metodos publicos que operen sobre sus propios campos (derivaciones, invariantes),
-pero NO logica que dependa de otros modelos o de infraestructura.
+- DEBERIA exponer metodos publicos que operen sobre sus propios campos (derivaciones, invariantes), pero NO logica que
+  dependa de otros modelos o de infraestructura.
 
 ## Infrastructure support
 
@@ -172,11 +140,11 @@ pero NO logica que dependa de otros modelos o de infraestructura.
 
 ## Excepciones y errores
 
-- DEBE usar excepciones de su capa, los servicios excepciones de la capa de servicio: `services.exceptions` y 
-infrastructura de la capa de infrastructura: `infrastructure.exceptions`.
+- DEBE usar excepciones de su capa, los servicios excepciones de la capa de servicio: `services.exceptions` y
+  infraestructura de la capa de infraestructura: `infrastructure.exceptions`.
 - DEBE centralizar mapeo HTTP en `resources.exceptionshandler.ApiExceptionHandler`.
-- DEBE los servicios no capturar excepciones de infrastructura,
-y dejar que sean tratadas por `resources.exceptionshandler.ApiExceptionHandler`
+- Los servicios NO DEBEN capturar excepciones de infraestructura, y dejar que sean tratadas por
+  `resources.exceptionshandler.ApiExceptionHandler`
 
 ## Inicializadores y seeders
 
@@ -198,9 +166,9 @@ Reglas:
 - NO DEBE modificar el contenido sembrado por el seeder.
 - PUEDE anadir datos nuevos durante el test cuando no altere los datos del seeder.
 - DEBE restaurar estado cuando el test modifique datos del seeder.
-- DEBE solo asegurarse con los datos del seeder, en el momento del desarrollo, teniendo en cuenta
-que en un futuro el seeder puede aumentarse
-- NO DEBE modificarse el seede, solo ampliarse con nuevos datos.
+- DEBE solo asegurarse con los datos del seeder, en el momento del desarrollo, teniendo en cuenta que en un futuro el
+  seeder puede aumentarse
+- NO DEBE modificarse el seeder, solo ampliarse con nuevos datos.
 
 ## Tecnologia y build
 
@@ -219,3 +187,21 @@ Regla de entorno:
 - Invertir la dependencia DTO -> entidad (que la entidad conozca el DTO).
 - Logica de negocio en constructores de beans.
 - Mezclar utilidades internas (`support`) con clientes HTTP externos (`clientshttp`) en el mismo paquete.
+
+## Limites de tamano
+
+Heuristicas de diseno, no leyes: el criterio real es responsabilidad unica y legibilidad. Estas cifras son el umbral que
+salta para revisar.
+
+- DEBERIA mantener <= 3 parametros por metodo. Si aparecen mas, agrupar los que formen un concepto en un objeto
+  (`criteria` / `creations`).
+- DEBERIA mantener <= 20 lineas por metodo.
+- DEBERIA mantener complejidad ciclomatica <= 8 por metodo.
+- DEBERIA mantener <= 2 niveles de anidamiento.
+- DEBERIA mantener <= 20 metodos publicos por clase.
+- DEBERIA mantener <= 6 dependencias inyectadas por constructor. Mas dependencias suele indicar que la clase tiene mas
+  de una responsabilidad.
+- DEBERIA mantener <= 250 lineas por clase.
+- DEBERIA mantener <= 120 caracteres por linea.
+- DEBERIA mantener entre 2 y 20 clases por paquete.
+
