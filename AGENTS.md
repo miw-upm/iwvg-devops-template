@@ -9,6 +9,26 @@ Estructura de paquetes alineada con el esquema UML de referencia.
 - `DEBERIA`: recomendado, salvo razon tecnica explicita.
 - `PUEDE`: opcional.
 
+## Limites de tamano
+
+Heuristicas de diseno, no leyes: el criterio real es responsabilidad unica
+y legibilidad. Estas cifras son el umbral que salta para revisar.
+
+- DEBERIA mantener <= 3 parametros por metodo. Si aparecen mas, agrupar los
+  que formen un concepto en un objeto (`criteria` / `creations`).
+- DEBERIA mantener <= 20 lineas por metodo.
+- DEBERIA mantener complejidad ciclomatica <= 8 por metodo.
+- DEBERIA mantener <= 2 niveles de anidamiento.
+- DEBERIA mantener <= 20 metodos publicos por clase.
+- DEBERIA mantener <= 6 dependencias inyectadas por constructor. Mas
+  dependencias suele indicar que la clase tiene mas de una responsabilidad.
+- DEBERIA mantener <= 250 lineas por clase.
+- DEBERIA mantener <= 100 caracteres por linea.
+- DEBERIA mantener entre 2 y 20 clases por paquete.
+
+Excepciones:
+- Pueden haberlas siempre que el diseño lo requiera
+
 ## Estructura del microservicio
 
 ```text
@@ -40,6 +60,7 @@ Capas (la dependencia solo baja: resources -> services -> infrastructure):
 
 ## DTOs
 
+- DEBE controlar el valor de sus atributos.
 - DEBE ubicarse en `resources.dtos`.
 - DEBE usarse para transporte HTTP de datos del recurso (salida y lecturas,
   y entradas simples), no para operaciones de negocio complejas.
@@ -98,6 +119,7 @@ Racional de dependencia (DTO -> entidad):
 
 ## Modelos complejos de creación
 
+- DEBE controlar el valor de sus atributos.
 - DEBE vivir en `services.creations`.
 - Representa una operacion de creacion compleja o una intencion de negocio
   que no se adapte bien a un DTO generico, sino que abarque a varios modelos.
@@ -132,11 +154,14 @@ Racional de dependencia (DTO -> entidad):
 - DEBE modelar relaciones con anotaciones JPA (`@OneToOne`, `@OneToMany`,
   `@ManyToOne`, `@ManyToMany`) cuando la relacion lo requiera.
 - DEBE usar `@Enumerated(EnumType.STRING)` para persistir enums de negocio.
+- DEBERIA exponer metodos publicos que operen sobre sus propios campos (derivaciones, invariantes),
+pero NO logica que dependa de otros modelos o de infraestructura.
 
 ## Infrastructure support
 
 - DEBE contener utilidades tecnicas internas reutilizables.
 - NO DEBE contener logica de negocio.
+- DEBERIA aplicar el patrón Facade para envolver librerías externas
 
 ## Infrastructure clients HTTP
 
