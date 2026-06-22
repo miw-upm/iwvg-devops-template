@@ -8,61 +8,7 @@
 [![CI iwvg-devops](https://github.com/miw-upm/iwvg-devops-template/actions/workflows/ci.yml/badge.svg)](https://github.com/miw-upm/iwvg-devops-template/actions/workflows/ci.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=miw-upm-github_iwvg-devops-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=miw-upm-github_iwvg-devops-template)
 
-### Tecnologías necesarias
-
-`Java` `Maven` `GitHub` `GitHub Actions` `Sonarcloud` `Slack` `Spring-Boot` `GitHub Packages` `Docker` `OpenAPI`
-
 ### :gear: Instalación del proyecto
-
-1. Clonar el repositorio en tu equipo, **mediante consola**:
-
-```sh
-cd <folder path>
-git clone https://github.com/miw-upm/iwvg-devops
-```
-
-2. Importar el proyecto mediante **IntelliJ IDEA**
-    * **Open**, y seleccionar la carpeta del proyecto.
-
-### :gear: Ejecución en local con IntelliJ
-
-* Ejecutar la clase **Application** con IntelliJ
-
-### :gear: Ejecución en local con Docker
-
-* Crear la red, solo una vez:
-
-```sh
-docker network create devops
-```
-
-* Ver redes:
-
-```sh
-docker network ls
-```
-
-* Comando Docker para crear imagen y arrancar contenedor con la imagen ( :warning: **incluir el punto final** ):
-
-```sh
-docker build -t devops:latest .
-docker run -d --name devops1  -p 8080:8080 devops
-```
-
-* Comando para crear imagen y arrancarla en contenedor mediante docker compose (Se utiliza el fichero *
-  *docker-compose.yml**)
-
-```sh
-docker compose up --build -d
-```
-
-* Cliente Web: `http://localhost:8080`
-
-### :book: Diapositivas
-
-* [Diapositivas de DevOps](docs/miw-iwvg-devops-slides.pdf)
-
-### :dvd: [Plantilla de la práctica en _docs/template-webflux.zip_](docs/template-webflux-3.4.zip)
 
 ### :page_with_curl: IWVG. Devops. Enunciado de la práctica
 > Todo el software deberá estar en ingles.
@@ -121,7 +67,6 @@ Se crearán las siguientes 2 historias (**Feature**).
 * Commits correctos y completos. **Hasta -2 ptos**.
 * Código limpio, bien formateado y ordenado. **Hasta -2 ptos**.
 * Uso del ingles. **Hasta -1 pto**.
-
 
 ### :clap: Entraga de la práctica
 Indicar como texto en la subida la **URL de GitHub**
