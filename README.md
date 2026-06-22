@@ -2,21 +2,11 @@
 
 ## Ingeniería Web: Visión General (IWVG) DevOps
 
-> Este proyecto es un apoyo docente de la asignatura. Cada release liberada corresponde al código utilizado en clase del
-> curso indicado
-
-[![GitHub](https://img.shields.io/github/license/miw-upm/iwvg-devops?color=informational)](https://github.com/miw-upm/iwvg-devops/blob/develop/LICENSE.md)
-[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/miw-upm/iwvg-devops?color=informational)](https://github.com/miw-upm/iwvg-devops/releases)
-![GitHub Release Date](https://img.shields.io/github/release-date/miw-upm/iwvg-devops?color=informational)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/miw-upm/iwvg-devops)
-![GitHub issues](https://img.shields.io/github/issues/miw-upm/iwvg-devops?color=important)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/miw-upm/iwvg-devops?color=informational)
+> Este proyecto es un apoyo docente de la asignatura. 
 
 ### Estado del código
-
-[![DevOps](https://github.com/miw-upm/iwvg-devops/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/miw-upm/iwvg-devops/actions/workflows/continuous-integration.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=es.upm.miw%3Aiwvg-devops&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=es.upm.miw%3Aiwvg-devops)
-[![Render broken](https://iwvg-devops-latest.onrender.com/version-badge)](https://iwvg-devops-latest.onrender.com/swagger-ui.html)
+[![CI iwvg-devops](https://github.com/miw-upm/iwvg-devops-template/actions/workflows/ci.yml/badge.svg)](https://github.com/miw-upm/iwvg-devops-template/actions/workflows/ci.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=miw-upm-github_iwvg-devops-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=miw-upm-github_iwvg-devops-template)
 
 ### Tecnologías necesarias
 
@@ -101,7 +91,7 @@ Se crearán las siguientes 3 historias (**Technical**) pero se trabajarán solo 
 #### 4. Release (**0.5 pto**)
 > Realizar la primera liberación del código, en **staging** y **main** (_**6.0.0-RC1**_ y _**6.0.0**_)
 
-#### 5. Preparación del software a desarrollar (**2 ptos**) y siguiente liberación.
+#### 5. Preparación del software a desarrollar (**2.5 ptos**) y siguiente liberación.
 Se crearán las siguientes 4 historias (**Feature**).
 * Feature 1ª: :one: añadir el endpoint: **GET /user/{id}**, sin tests. :five: Crear tests del servicio y del endpoint. Los tests deben realizarse sabiendo que hay un seeder.
 * Feature 2ª: :two: mejorar el filtro de busqueda añadiendo una tercera condición: **billable**, significa que el usuario es facturable,
@@ -113,7 +103,7 @@ Se crearán las siguientes 4 historias (**Feature**).
 
 > Realizar la segunda liberación del código en **staging** y **main**.
 
-#### 6. Preparación del software a desarrollar (**2 ptos**) y siguiente liberación.
+#### 6. Preparación del software a desarrollar (**2.5 ptos**) y siguiente liberación.
 Se crearán las siguientes 2 historias (**Feature**).
 * Feature 1ª: :one: añadir el endpoint: **PUT /user/{id}**, sin tests. :three: Crear tests del servicio y del endpoint.
 * Feature 2ª: :two: añadir el endpoint: **PATH /user body:[{id,active}]**, actualiza una lista de usuarios solo con el campo active. :four: añadir los tests de servicio y endpoint.
