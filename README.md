@@ -59,15 +59,6 @@ Se crearán las siguientes 2 historias (**Feature**).
 #### 7. Bug (**1.5 ptos**)
 > Suponer que la Feature 2ª anterior existe un error. Error encontrado es que si el user contiene el roll de ADMIN, no se puede desactivar, aspecto que no se tenía en cuenta. Realizar un cambio y proceder a la cuarta liberación del código **staging** y **main**.
 
-### :white_check_mark: Criterios transversales **con pérdida de puntos por falta de calidad**
-* Uso correcto del flujo de trabajo ramificado. **Hasta -3 ptos**.
-* Adecuación de la temporalidad de desarrollo según el enunciado. **Hasta -3 ptos**.
-* Mantenimiento de calidad del código según GitHub Actions, Sonar. Cobertura >= 80%. **Hasta -3 ptos**.
-* Gestión adecuada, completa y equlibrada (estimación, tiempo real...) durante el desarrollo. **Hasta -2 ptos**.
-* Commits correctos y completos. **Hasta -2 ptos**.
-* Código limpio, bien formateado y ordenado. **Hasta -2 ptos**.
-* Uso del ingles. **Hasta -1 pto**.
-
 ### :clap: Entraga de la práctica
 Indicar como texto en la subida la **URL de GitHub**
 > **NOTA. Acordarse de dar al botón de envío**

@@ -3,7 +3,6 @@ package es.upm.api.functionaltests;
 import es.upm.api.configurations.SeederForDev;
 import es.upm.api.resources.UserResource;
 import es.upm.api.resources.dtos.UserDto;
-import es.upm.api.services.exceptions.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
