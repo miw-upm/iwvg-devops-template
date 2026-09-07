@@ -50,11 +50,12 @@ Al evaluar, solo se tiene en cuenta si se acaba haciendo bien la gestión, lo er
 * :two: Análisis del código con **Sonarcloud**. Incluir **Badge** en README con **link** a la cuenta de Sonar.
   * Se tiene que realizar en dos etapas, primero se conecta, y luego se establece rama por defecto y patrón de ramas.
 * :three: Deploy con **AWS**. Incluir **Badge** en README con **link**.
-  * En CD probar primero Build & Push Docker image sin AWS. En este caso debe subirse la rama staging.
-  * Crear instancia Lightsail (Ubuntu 22.04 LTS, 0.5GB, 2 vCPUs)
+  * En CD probar primero Build & Push Docker image sin AWS. En este caso debe subirse la rama staging. Comprobar que se ha creado el docker en github packages
+  * Crear instancia Lightsail (Ubuntu 22.04 LTS, 0.5GB, 2 vCPUs) para stagin.
   * Subir docker de DB. Se ha facilitado estableciendo un deploy de DB con la rama `postgres`. Comprobar en la consola de AWS que el docker se levanta bien.
   * Subir docker del api, mediante la rama staging, comprobar en AWS que el docker se levanta bien. Probar con el navegador: http://???.???.???.???:8080/system.
   * Añadir el link del badge
+  * Para `main` es exactamente lo mismo, para ahorrar costes se ha comentado el deploy en `cd-main`. Subir `main` y comprobar que se genera el docker en packages
 > :one:, :two:, :three: representa el orden temporal de desarrollo de los issues.
 
 #### 4. Release (**0.5 pto**)
