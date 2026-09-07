@@ -7,13 +7,13 @@ Guía de sugerencia de instalación de instancia
 ### Especificaciones
 - Operating system (OS) only: Ubuntu 22.04 LTS
 - General purpose
-- 1GB RAM (preferable 2GB) (First 90 days free)
-- Name: iwvg
+- 0.5GB RAM & 2vCPUs
+- Name: iwvg-staging
 
 ### Firewall. Abrir (IPv4 & IPv6)
 - SSH TCP 22 (Lightsail browser SSH)
-- HTTP TCP 80 (Any IPv4 address)
-- HTTPS TCP 443 (Any IPv4 address)
+- HTTP TCP 80, 8080? (Any IPv4 address, Any IPv6 address)
+- HTTPS TCP 443 (Any IPv4 address)?
 
 ## 2️⃣ Preparar servidor Ubuntu
 
@@ -55,13 +55,13 @@ docker compose version
 ### Configuración de red Docker
 ```bash
 # Crear red
-docker network create goa
+docker network create devops
 
 # Verificar redes
 docker network ls
 
 # Inspeccionar red
-docker network inspect goa
+docker network inspect devops
 ```
 
 ## 4️⃣ Optimización del Servidor

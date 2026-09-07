@@ -16,22 +16,45 @@
 #### 1. Crear un proyecto (**0.5 pto**)
 Crear un proyecto Maven llamado: **iwvg-devops-apellido-nombre**, versión **6.0.0**. Para ello se aporta **zip** de la
 plantilla en la plataforma de Moodle.
-> Descomprimir la carpeta.
+> Descomprimir la carpeta o copiar el proyecto y borrar las carpetas `.idea & .git`.
 > Recordar cambiar el nombre de la  carpeta.   
 > Recordar editar el pom y cambiar el nombre del artefacto (artifactId).
 > Importarlo desde IntelliJ.   
 > Crear un repositorio en GitHub con el mensaje del primer comit: "Initial. Nombre Apellido"
 
 #### 2. Preparar la gestión mediante Scrum (**0.5 pto**)
-> Crear un proyecto de gestión en GitHub y prepararlo para la metodología de Scrum (columnas, etiquetas, hitos...).
+> Crear un proyecto de gestión en GitHub y prepararlo para la metodología de Scrum (columnas, etiquetas, hitos...)
+> Se puede copiar de otro proyecto.
 > Recordar hacerlo `public` para que se pueda visualizar.
 
+> Preparar ramas locales: `develop`, `staging` y `main`. 
+
+> Conectarlo con el repositorio remoto, repasar ci.yml, con CodeQL y sin Sonar.
+> Importante!!! se empieza subiendo `develop`. Asegurarse que CI se dispara y no da error.
+
+> Asociar el repositorio con el proyecto de gestión. 
+
 #### 3. Preparación del ecosistema (**2.5 ptos**)
-Se crearán las siguientes 3 historias (**Technical**) pero se trabajarán solo con la ramas **develop** y **staging**.
+Se crearán las siguientes 3 historias (**Technical**) pero, excepcionalmente, se trabajarán solo con la ramas **develop** y **staging**.
+Si se comenten errores, no pasa nada, se elimina el issue y se crea otro.
+Si cometemos errores en los commits, no pasa nada, se toma nota y para la próxima vez se hace bien, no intentar ni corregir y dar marcha atras.
+Al evaluar, solo se tiene en cuenta si se acaba haciendo bien la gestión, lo errores de inicio no se tienen en cuenta siempre que se acabe haciendo bien.
+
+> A partir de ahora, en todos los commits, siempre se añade al final la coletilla del número de issue, por ejemplo: "mensaje commit. #1"
 
 * :one: Integración continua con **GitHub Actions**. Incluir **Badge** en README con **link**.
+  * Poner issue In Progress. Rellenar issue adecuadamente: `Assignees`, `Stimation`, `Type`
+  * Cuando se suba `develop`, asegurarse que en el issue aparece la referencia del commit, ya que tiene asociado la coletilla #???
+  * Finalmente, cuando se finaliza, se pone el tiempo real consumido en horas con un decimal (por ejemplo: 0.3) y se cierra el issue. Fijarse que el issue se desplaza automaticamente a `Done`
+  * Ser realistas, no pasa nada si la estimación con el tiempo real es muy diferente, sólo aprendemos para estimar mejor la próxima vez.
 * :two: Análisis del código con **Sonarcloud**. Incluir **Badge** en README con **link** a la cuenta de Sonar.
+  * Se tiene que realizar en dos etapas, primero se conecta, y luego se establece rama por defecto y patrón de ramas.
 * :three: Deploy con **AWS**. Incluir **Badge** en README con **link**.
+  * En CD probar primero Build & Push Docker image sin AWS. En este caso debe subirse la rama staging.
+  * Crear instancia Lightsail (Ubuntu 22.04 LTS, 0.5GB, 2 vCPUs)
+  * Subir docker de DB. Se ha facilitado estableciendo un deploy de DB con la rama `postgres`. Comprobar en la consola de AWS que el docker se levanta bien.
+  * Subir docker del api, mediante la rama staging, comprobar en AWS que el docker se levanta bien. Probar con el navegador: http://???.???.???.???:8080/system.
+  * Añadir el link del badge
 > :one:, :two:, :three: representa el orden temporal de desarrollo de los issues.
 
 #### 4. Release (**0.5 pto**)
