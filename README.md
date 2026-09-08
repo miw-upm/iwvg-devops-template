@@ -66,13 +66,13 @@ Al evaluar, solo se tiene en cuenta si se acaba haciendo bien la gestión, lo er
 Se crearán las siguientes 4 historias (**Feature**) simultaneamente, pero las ramas se van creando según empecemos a trabajar con ellas.
 La estimación lo vamos a retrasar justo antes de empezar cada issue.
 * Feature 1ª: :one: añadir el endpoint: **GET /users/{id}**, sin tests. :five: Crear tests del servicio y del endpoint. Los tests deben realizarse sabiendo que hay un seeder.
-  1. Que no exista ningún commit pendiente. Se le pide a la IA que lo programe. A veces, intenta filosofias extrañas, debemos vigilarla y corregirla si se sale de nuestro estilo.
-  2. Revisamos el codigo y corregimos.
-  3. Se añaden tests.
-  4. En este caso, observar que develop a evolucionado respecto a nuestro punto de partida, por lo tanto, debemos incorporar los cambios a nuestra rama.
-  5. El comando es: git merge -m"merge develop into #5" develop. Puede haber conflictos, se deben resolver.
-  6. Por último, incorporamos la rama a develop, aquí jamas puede haber conflictos.
-  7. Subimos develop y se espera que la CI es correcta.
+  * Que no exista ningún commit pendiente. Se le pide a la IA que lo programe. A veces, intenta filosofias extrañas, debemos vigilarla y corregirla si se sale de nuestro estilo.
+  * Revisamos el codigo y corregimos.
+  * Se añaden tests.
+  * En este caso, observar que develop a evolucionado respecto a nuestro punto de partida, por lo tanto, debemos incorporar los cambios a nuestra rama.
+  * El comando es: git merge -m"merge develop into #5" develop. Puede haber conflictos, se deben resolver.
+  * Por último, incorporamos la rama a develop, aquí jamas puede haber conflictos.
+  * Subimos develop y se espera que la CI es correcta.
 * Feature 2ª: :two: mejorar el filtro de busqueda añadiendo una tercera condición: **billable**, significa que el usuario es facturable,
   eso ocurre cuando sus campos firstName, familyName, email, identity, address, city, province, postalCode tienen contenido real. :eight: añadir los tests de servicio y endpoint.
 * Feature 3ª: :three: añadir el endpoint: **DELETE /users/{id}**, sin tests. :four: añadir los tests de servicio y endpoint.
@@ -98,6 +98,9 @@ Se crearán las siguientes 2 historias (**Feature**).
 
 #### 7. Bug (**1.5 ptos**)
 > Suponer que la Feature 2ª anterior existe un error. Error encontrado es que si el user contiene el roll de ADMIN, no se puede desactivar, aspecto que no se tenía en cuenta. Realizar un cambio y proceder a la cuarta liberación del código **staging** y **main**.
+
+#### 8. Mejora general de calidad.
+> Revisar Sonar y arreglar problemas. Revisar el código en su estado final y solucionar/mejorar el mismo. Mejorar nombres... es decir, recrearse tranquilamente en simplificar y mejorar.
 
 ### :clap: Entraga de la práctica
 Indicar como texto en la subida la **URL de GitHub**
