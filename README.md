@@ -106,5 +106,7 @@ Se crearán las siguientes 2 historias (**Feature**).
 Indicar como texto en la subida la **URL de GitHub**
 > **NOTA. Acordarse de dar al botón de envío**
 
-Ejemplo resuelto:
-![](./docs/miw-iwvg-devops-demo.png)
+Ejemplo casi resuelto:
+![](./docs/scrum1.png)
+![](./docs/practice1.png)
+
