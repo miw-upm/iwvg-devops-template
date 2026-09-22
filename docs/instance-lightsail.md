@@ -7,8 +7,8 @@ Guía de sugerencia de instalación de instancia
 ### Especificaciones
 - Operating system (OS) only: Ubuntu 22.04 LTS
 - General purpose
-- 0.5GB RAM & 2vCPUs
-- Name: iwvg-staging
+- 1GB RAM & 2vCPUs
+- Name: miw
 
 ### Firewall. Abrir (IPv4 & IPv6)
 - SSH TCP 22 (Lightsail browser SSH)
