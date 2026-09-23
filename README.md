@@ -1,30 +1,38 @@
 ## [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)
 
-## Ingeniería Web: Visión General (IWVG) DevOps
+## Ingeniería Web: Visión General (IWVG)
 
-> Este proyecto es un apoyo docente de la asignatura.
+> Este proyecto es un apoyo docente de la asignatura. Hace la función de plantilla para crear proyectos.
 
 ### Estado del código
+
 [![CI iwvg-devops](https://github.com/miw-upm/iwvg-devops-template/actions/workflows/ci.yml/badge.svg)](https://github.com/miw-upm/iwvg-devops-template/actions/workflows/ci.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=miw-upm-github_iwvg-devops-template&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=miw-upm-github_iwvg-devops-template)
 
-### :gear: Instalación del proyecto
+### :page_with_curl: Enunciado de la práctica
 
-### :page_with_curl: IWVG. Devops. Enunciado de la práctica
+> [!IMPORTANT]
+> La práctica consiste en montar un ecosistema completo. Se parte de este proyecto que hace la función de plantilla,
+> pero se debe adaptar toda la configuración para que se enlace con las cuentas del alumno de las diferentes
+> herramientas o servicios.
 > Todo el software deberá estar en inglés.
 
 #### 1. Crear un proyecto (**0.5 pto**)
-Crear un proyecto Maven llamado: **iwvg-devops-apellido-nombre**, versión **6.0.0**. Para ello se aporta como plantilla
-este mismo proyecto. Duplicarlo y...
-> Descomprimir la carpeta o copiar el proyecto y borrar las carpetas `.idea`, `.git` y `target`.
-> Recordar cambiar el nombre de la carpeta.   
-> Recordar editar el `pom` y cambiar el nombre del artefacto (artifactId).
-> Importarlo desde IntelliJ.   
-> Crear un repositorio en GitHub con el mensaje del primer commit: `git commit -m "Initial. Nombre Apellido"`
+
+> [!NOTE]
+> Crear un proyecto Maven llamado: **iwvg-devops-apellido-nombre**, versión **6.0.0**. Para ello se aporta como
+> plantilla este mismo proyecto. Duplicarlo y...
+> 1. Descomprimir la carpeta o copiar el proyecto y borrar las carpetas `.idea`, `.git` y `target`.
+> 2. Recordar cambiar el nombre de la carpeta.
+> 3. Recordar editar el `pom` y cambiar el nombre del artefacto (artifactId).
+> 4. Importarlo desde IntelliJ.
+> 5. Crear un repositorio en GitHub con el mensaje del primer commit: `git commit -m "Initial. Nombre Apellido"`
 
 #### 2. Preparar la gestión mediante Scrum (**0.5 pto**)
-> Crear un proyecto de gestión en GitHub y prepararlo para la metodología de Scrum (columnas, etiquetas, hitos...)
-> Se puede copiar de otro proyecto o desde este mismo, pero asociarlo después a vuestro proyecto.
+
+> [!NOTE]
+> Crear un proyecto de gestión en GitHub y prepararlo para la metodología de Scrum (columnas, etiquetas, hitos...).
+> Se puede copiar de otro proyecto o de este mismo, pero asociarlo después a vuestro proyecto.
 > Recordar hacerlo `public` para que se pueda visualizar.
 
 * Preparar ramas locales: `develop`, `staging` y `main`.
@@ -33,74 +41,116 @@ este mismo proyecto. Duplicarlo y...
 * Asociar el repositorio con el proyecto de gestión.
 
 #### 3. Preparación del ecosistema (**2.5 ptos**)
-Se crearán las siguientes 3 historias (**Technical**) pero, excepcionalmente, se trabajará solo con las ramas **develop** y **staging**.
-Si se cometen errores, no pasa nada, se elimina el issue y se crea otro.
-Si cometemos errores en los commits, no pasa nada, se toma nota y para la próxima vez se hace bien; no intentar corregir ni dar marcha atrás.
-Al evaluar, solo se tiene en cuenta si se acaba haciendo bien la gestión; los errores de inicio no se tienen en cuenta siempre que se acabe haciendo bien.
 
-> A partir de ahora, en todos los commits, siempre se añade al final la coletilla del número de issue, por ejemplo: `mensaje commit. #1`
+> [!IMPORTANT]
+> Se crearán las siguientes 3 historias (**Technical**) pero, excepcionalmente, se trabajará solo con las ramas
+> **develop** y **staging**. A partir de ahora, en todos los commits, siempre se añade al final la coletilla del número
+> de issue, por ejemplo: `mensaje commit. #1`
+
+* Si se cometen errores, no pasa nada, se elimina el issue y se crea otro.
+* Si cometemos errores en los commits, no pasa nada, se toma nota y para la próxima vez se hace bien.
+* **No intentar corregir ni dar marcha atrás**.
+
+Al evaluar, solo se tiene en cuenta si se acaba haciendo bien la gestión; los errores de inicio no se tienen en cuenta
+siempre que se acabe haciendo bien.
 
 * :one: Integración continua con **GitHub Actions**. Incluir **Badge** en README con **link**.
-  * Poner issue In Progress. Rellenar issue adecuadamente: `Assignees`, `Estimation`, `Type`
-  * Cuando se suba `develop`, asegurarse de que en el issue aparece la referencia del commit, ya que tiene asociada la coletilla #???
-  * Finalmente, cuando se finaliza, se pone el tiempo real consumido en horas con un decimal (por ejemplo: 0.3) y se cierra el issue. Fijarse en que el issue se desplaza automáticamente a `Done`
-  * Ser realistas, no pasa nada si la estimación y el tiempo real son muy diferentes, solo aprendemos para estimar mejor la próxima vez.
-* :two: Análisis del código con **Sonarcloud**. Incluir **Badge** en README con **link** a la cuenta de Sonar.
-  * Se tiene que realizar en dos etapas: primero se conecta, y luego se establece rama por defecto y patrón de ramas.
+    * Poner issue In Progress. Rellenar issue adecuadamente: `Assignees`, `Estimation`, `Type`
+    * Cuando se suba `develop`, asegurarse de que en el issue aparece la referencia del commit, ya que tiene asociado
+      el mensaje `#???`
+    * Finalmente, cuando se finaliza, se pone el tiempo real consumido en horas con un decimal (por ejemplo: 0.3) y se
+      cierra el issue. Fijarse en que el issue se desplaza automáticamente a `Done`
+    * Ser realistas, no pasa nada si la estimación y el tiempo real son muy diferentes, solo aprendemos para estimar
+      mejor la próxima vez.
+* :two: Análisis del código con **SonarCloud**. Incluir **Badge** en README con **link** a la cuenta de Sonar.
+    * Se tiene que realizar en dos etapas: primero se conecta, y luego se establece rama por defecto y patrón de ramas
+      dentro de la configuración en la cuenta de Sonar.
 * :three: Deploy con **AWS**. Incluir **Badge** en README con **link**.
-  * En CD probar primero Build & Push Docker image sin AWS. En este caso debe subirse la rama staging. Comprobar que se ha creado el docker en GitHub Packages
-  * Crear instancia Lightsail (Ubuntu 22.04 LTS, 0.5GB, 2 vCPUs) para staging.
-  * Subir docker de DB. Se ha facilitado estableciendo un deploy de DB con la rama `postgres`. Comprobar en la consola de AWS que el docker se levanta bien.
-  * Subir docker del api, mediante la rama staging, comprobar en AWS que el docker se levanta bien. Probar con el navegador: http://???.???.???.???:8080/system.
-  * Añadir el link del badge
-  * Para `main` es exactamente lo mismo; para ahorrar costes se ha comentado el deploy en `cd-main`. Subir `main` y comprobar que se genera el docker en packages
+    * En CD probar primero Build & Push Docker image sin AWS. En este caso debe subirse la rama `staging`. Comprobar que
+      se ha creado el docker en GitHub Packages.
+    * Crear instancia Lightsail (Ubuntu 22.04 LTS, 0.5 GB, 2 vCPUs) para `staging`.
+    * Subir docker de DB. Se ha facilitado estableciendo un deploy de DB con la rama `postgres`. Comprobar en la consola
+      de AWS que el docker se levanta bien.
+    * Subir docker de la API, mediante la rama `staging`, comprobar en AWS que el docker se levanta bien. Probar con el
+      navegador: `http://???.???.???.???:8080/system`.
+    * Añadir el link del badge.
+    * Para `main` es exactamente lo mismo; para ahorrar costes se ha comentado el deploy en `cd-main`. Subir `main` y
+      comprobar que se genera el docker en packages.
+
 > :one:, :two:, :three: representa el orden temporal de desarrollo de los issues.
 
 #### 4. Release (**0.5 pto**)
+
+> [!NOTE]
 > Realizar la primera liberación del código, en **staging** y **main** (_**6.0.0-RC1**_ y _**6.0.0**_).
 > Para ello la rama o tipo será `Chore`.
 
 #### 5. Preparación del software a desarrollar (**2.5 ptos**) y siguiente liberación.
-Se crearán las siguientes 4 historias (**Feature**) simultáneamente, pero las ramas se van creando según empecemos a trabajar con ellas.
-La estimación la vamos a retrasar justo antes de empezar cada issue.
-* Feature 1ª: :one: añadir el endpoint: **GET /users/{id}**, sin tests. :five: Crear tests del servicio y del endpoint. Los tests deben realizarse sabiendo que hay un seeder.
-  * Que no exista ningún commit pendiente. Se le pide a la IA que lo programe. A veces intenta filosofías extrañas; debemos vigilarla y corregirla si se sale de nuestro estilo.
-  * Revisamos el código y corregimos.
-  * Se añaden tests.
-  * En este caso, observar que develop ha evolucionado respecto a nuestro punto de partida; por lo tanto, debemos incorporar los cambios a nuestra rama.
-  * El comando es: `git merge -m"merge develop into #5" develop`. Puede haber conflictos, se deben resolver.
-  * Por último, incorporamos la rama a develop; aquí jamás puede haber conflictos.
-  * Subimos develop y se espera que la CI sea correcta.
-* Feature 2ª: :two: mejorar el filtro de búsqueda añadiendo una tercera condición: **billable**, significa que el usuario es facturable,
-  eso ocurre cuando sus campos firstName, familyName, email, identity, address, city, province, postalCode tienen contenido real. :eight: añadir los tests de servicio y endpoint.
-* Feature 3ª: :three: añadir el endpoint: **DELETE /users/{id}**, sin tests. :four: añadir los tests de servicio y endpoint.
-  * Finalizado. Lanzamos tests en local y nos aseguramos de que pasan TODOS; la IA te la lía a veces.
-  * Este se cierra; recordar NO FAST-FORWARD, el comando es: `git merge --no-ff -m"merge #7 into develop" feature/7`
-  * Subir develop y asegurarse de que la CI es correcta.
-  * Finalmente se cierra el issue.
-* Feature 4ª: :six: añadir el endpoint: **PUT /users/{id}/active**, sin tests. :seven: añadir los tests de servicio y endpoint.
-> :one:, :two:... representa el orden temporal de desarrollo de los features. Cuando un feature se termine se debe incorporar a la rama **develop**. Cuando un feature se inicie, siempre empieza de donde esté develop.
-> Se debe vigilar la calidad del código y que se cumpla adecuadamente. Aunque el código de la IA funcione, tenemos que asegurarnos de que se cumplan las responsabilidades de cada clase y de que haga exactamente lo que le pedimos.
 
-> Realizar la segunda liberación del código en **staging** y **main**. Recordar que es de tipo `Chore`.
+Se crearán las siguientes 4 mejoras (**Feature**) a la vez, pero las ramas se van creando según empecemos a
+trabajar con ellas.
+La estimación la dejaremos para justo antes de empezar cada mejora.
+
+* **Feature 1ª**: :one: añadir el endpoint: **GET /users/{id}**, sin tests. :five: Crear tests del servicio y del endpoint.
+    * Asegurarse de que no existe ningún cambio pendiente de commit. Se le pide a la IA que lo programe, y luego hacemos
+      commit.
+    * Revisamos el código y corregimos. Hacemos commit, explicando los cambios que hemos realizado respecto a la IA.
+    * Se añaden tests, sabiendo que hay un seeder; los programa la IA.
+    * En este punto, observar que `develop` ha evolucionado respecto a nuestro punto de partida; por lo tanto, debemos
+      incorporar los cambios a nuestra rama.
+    * El comando es: `git merge -m"merge develop into #5" develop`. Puede haber conflictos, se deben resolver.
+    * Por último, incorporamos la rama a `develop`; aquí jamás puede haber conflictos y se haría un avance rápido
+      (FAST-FORWARD), por eso aplicamos el flag `--no-ff`.
+    * Subimos `develop` y se espera que la CI sea correcta.
+* **Feature 2ª**: :two: mejorar el filtro de búsqueda añadiendo una tercera condición: **billable**, significa que el
+  usuario es facturable, eso ocurre cuando sus campos firstName, familyName, email, identity, address, city, province,
+  postalCode tienen contenido real. :eight: añadir los tests de servicio y endpoint.
+* **Feature 3ª**: :three: añadir el endpoint: **DELETE /users/{id}**, sin tests. :four: añadir los tests de servicio y
+  endpoint.
+    * Finalizado. Lanzamos tests en local y nos aseguramos de que pasan TODOS; la IA te la lía a veces.
+    * Este se cierra; recordar NO FAST-FORWARD, el comando es: `git merge --no-ff -m"merge #7 into develop" feature/7`
+    * Subir `develop` y asegurarse de que la CI es correcta.
+    * Finalmente se cierra el issue.
+* **Feature 4ª**: :six: añadir el endpoint: **PUT /users/{id}/active**, sin tests. :seven: añadir los tests de servicio y
+  endpoint.
+
+> [!IMPORTANT]
+> :one:, :two:... representa el orden temporal de desarrollo de los features. Cuando un feature se termine se debe
+> incorporar a la rama **develop**. Cuando un feature se inicie, siempre empieza de donde esté develop.
+> Se debe vigilar la calidad del código y que se cumpla adecuadamente. Aunque el código de la IA funcione, tenemos que
+> asegurarnos de que se cumplan las responsabilidades de cada clase y de que haga exactamente lo que le pedimos.
+
+Realizar la segunda liberación del código en **staging** y **main**. Recordar que es de tipo `Chore`.
+
 * Recordar que tanto `staging` como `main` se deben borrar, crear de nuevo y realizar una subida forzada.
 * El comando es: `git push origin staging --force`
-* OJO: bajo ninguna excusa, está totalmente prohibido subir de forma forzada `develop`, `feature`...
+* OJO: **bajo ninguna excusa**, está totalmente prohibido subir de forma forzada `develop`, `feature`...
 
 #### 6. Preparación del software a desarrollar (**2.5 ptos**) y siguiente liberación.
-Se crearán las siguientes 2 historias (**Feature**).
-* Feature 1ª: :one: añadir el endpoint: **PUT /users/{id}**, sin tests. :three: Crear tests del servicio y del endpoint.
-* Feature 2ª: :two: añadir el endpoint: **PATCH /users body:[{id,active}]**, actualiza una lista de usuarios solo con el campo active. :four: añadir los tests de servicio y endpoint.
 
-> Realizar la tercera liberación del código en **staging** y **main**.
+Se crearán las siguientes 2 mejoras (**Feature**).
+
+* **Feature 1ª**: :one: añadir el endpoint: **PUT /users/{id}**, sin tests. :three: Crear tests del servicio y del endpoint.
+* **Feature 2ª**: :two: añadir el endpoint: **PATCH /users body:[{id,active}]**, actualiza una lista de usuarios solo con el
+  campo active. :four: añadir los tests de servicio y endpoint.
+
+Realizar la tercera liberación del código en **staging** y **main**.
 
 #### 7. Bug (**1.5 ptos**)
-> Suponer que en la Feature 2ª anterior existe un error. El error encontrado es que, si el user contiene el rol de ADMIN, no se puede desactivar, aspecto que no se tenía en cuenta. Realizar un cambio y proceder a la cuarta liberación del código en **staging** y **main**.
+
+> [!NOTE]
+> Suponer que en la Feature 2ª anterior existe un error. El error encontrado es que, si el usuario tiene el rol de
+> ADMIN, no se puede desactivar, aspecto que no se tenía en cuenta. Realizar un cambio y proceder a la cuarta liberación
+> del código en **staging** y **main**.
 
 #### 8. Mejora general de calidad.
-> Revisar Sonar y arreglar problemas. Revisar el código en su estado final y solucionar/mejorar el mismo. Mejorar nombres... es decir, recrearse tranquilamente en simplificar y mejorar.
+
+> [!TIP]
+> Revisar Sonar y arreglar problemas. Revisar el código en su estado final y solucionar/mejorar el mismo. Mejorar
+> nombres... es decir, recrearse tranquilamente en simplificar y mejorar.
 
 ### :clap: Entrega de la práctica
+
 Indicar como texto en la subida la **URL de GitHub**
 > **NOTA. Acordarse de dar al botón de envío**
 
